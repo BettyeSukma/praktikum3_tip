@@ -1,0 +1,86 @@
+
+  <!-- FORM LOGIN -->
+  <div class="container" id="login-container">
+    <h2>Login</h2>
+    <link rel="stylesheet" href="style.css">
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="login-error" class="error"></p>
+  </div>
+
+  <!-- HALAMAN UTAMA -->
+  <div class="container hidden" id="main-container">
+    <nav>
+      <button onclick="showPage('profil')">Profil</button>
+      <button onclick="showPage('komposisi')">Komposisi</button>
+      <button onclick="showPage('manfaat')">Manfaat</button>
+    </nav>
+
+    <div id="content">
+      <div id="profil" class="page">
+        <h2>Profil Produk: Susu Indomilk</h2>
+        <img src="135425b58ba517d9f12f9ed808ba9b60.jpeg" alt="Indomilk" class="product-img">
+        <p>Susu Indomilk adalah produk susu berkualitas tinggi yang diproduksi oleh PT Indolakto, anak perusahaan Indofood. 
+          Indomilk hadir dalam berbagai varian seperti susu cair UHT, susu bubuk, dan susu kental manis, yang diformulasikan 
+          untuk memenuhi kebutuhan nutrisi keluarga Indonesia. Dengan rasa yang lezat dan kandungan gizi seimbang, 
+          Indomilk menjadi pilihan tepat untuk pertumbuhan dan kesehatan seluruh anggota keluarga.</p>
+      </div>
+
+      <div id="komposisi" class="page hidden">
+        <h2>Komposisi</h2>
+        <ul>
+          <li>Susu segar</li>
+          <li>Vitamin A, B1, B2, B6, B12, C, D, E</li>
+          <li>Kalsium</li>
+          <li>Zat Besi dan Zinc</li>
+        </ul>
+      </div>
+
+      <div id="manfaat" class="page hidden">
+        <h2>Manfaat</h2>
+        <ul>
+          <li>Mendukung pertumbuhan tulang dan gigi</li>
+          <li>Menjaga sistem imun dan daya tahan tubuh</li>
+          <li>Menambah energi dan konsentrasi</li>
+          <li>Sumber protein dan vitamin harian</li>
+        </ul>
+        <h2>Aturan Konsumsi</h2>
+        <ul>
+          <li>2–3 gelas per hari, bisa dikonsumsi hangat atau dingin</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Sederhana: username dan password apa pun boleh
+      if (username && password) {
+        document.getElementById("login-container").classList.add("hidden");
+        document.getElementById("main-container").classList.remove("hidden");
+        showPage('profil');
+      } else {
+        document.getElementById("login-error").innerText = "Masukkan username dan password!";
+      }
+    }
+
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => {
+        page.classList.add('hidden');
+        page.classList.remove('active');
+      });
+
+      const activePage = document.getElementById(pageId);
+      activePage.classList.remove('hidden');
+      activePage.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
